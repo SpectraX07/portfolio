@@ -1,21 +1,49 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { CustomCursor } from './components/ui/CustomCursor';
+import { useEffect, useState } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { Projects } from './components/Projects';
 import { Contact } from './components/Contact';
-import { Loader } from './components/Loader';
-
+import { CustomCursor } from './components/ui/CustomCursor';
 import { ParallaxBackground } from './components/ui/ParallaxBackground';
+import { Loader } from './components/Loader';
+import { ProjectDetails } from './components/ProjectDetails';
+import { AllProjects } from './components/AllProjects';
+import { AnimatePresence, motion } from 'framer-motion';
+import Lenis from '@studio-freight/lenis';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const location = useLocation();
+
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      touchMultiplier: 2,
+    });
+
+    const raf = (time: number) => {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    };
+
+    requestAnimationFrame(raf);
+
+    // Initial Loading Simulation
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2800);
+
+    return () => {
+      lenis.destroy();
+      clearTimeout(timer);
+    };
+  }, []);
 
   return (
-    <div className="min-h-screen text-white selection:bg-cyan-500/30 relative">
+    <>
       <CustomCursor />
-      <ParallaxBackground />
 
       <AnimatePresence mode="wait">
         {isLoading ? (
@@ -23,40 +51,29 @@ function App() {
         ) : (
           <motion.div
             key="content"
-            initial="hidden"
-            animate="visible"
-            variants={{
-              visible: { transition: { staggerChildren: 0.3 } }
-            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
           >
-            <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8 } } }}>
-              <Hero />
-            </motion.div>
+            <ParallaxBackground />
 
-            <motion.div variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.8 } } }}>
-              <About />
-            </motion.div>
-
-            <motion.div variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.8 } } }}>
-              <Projects />
-            </motion.div>
-
-            <motion.div variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.8 } } }}>
-              <Contact />
-            </motion.div>
-
-            <motion.footer
-              variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
-              className="bg-black py-8 border-t border-white/10 text-center"
-            >
-              <p className="text-gray-500 font-mono text-sm">
-                &copy; {new Date().getFullYear()} Subrata Jana. System Active.
-              </p>
-            </motion.footer>
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={
+                <main className="relative z-10">
+                  <Hero />
+                  <section id="about"><About /></section>
+                  <section id="projects"><Projects /></section>
+                  <section id="contact"><Contact /></section>
+                </main>
+              } />
+              <Route path="/modules" element={<AllProjects />} />
+              <Route path="/project/:id" element={<ProjectDetails />} />
+            </Routes>
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </>
   );
 }
 

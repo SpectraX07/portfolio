@@ -60,6 +60,12 @@ export const ParallaxBackground = () => {
             {/* Gradient Overlay for better text readability */}
             <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/70 to-black/90 z-[-1]" />
 
+            {/* Global Grid Animation (Moved from Hero) */}
+            <div className="absolute inset-0 z-[-1] opacity-20">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+                <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-cyan-500 opacity-20 blur-[100px]"></div>
+            </div>
+
             {/* Deep Background Gradients */}
             <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-cyan-900/15 rounded-full blur-[120px]" />
             <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-900/15 rounded-full blur-[100px]" />

@@ -29,6 +29,65 @@ const TerminalLine = ({ command, output, delay, startAnimation }: { command: str
     );
 };
 
+const BlinkingCursor = () => {
+    const [visible, setVisible] = useState(true);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setVisible(v => !v);
+        }, 530); // Classic terminal blink rate
+        return () => clearInterval(interval);
+    }, []);
+
+    return (
+        <span className={`inline-block w-2.5 h-5 bg-green-500 ml-2 align-middle ${visible ? 'opacity-100' : 'opacity-0'}`} />
+    );
+};
+
+const SkillCard = ({ icon, label, value, index }: { icon: any, label: string, value: string, index: number }) => {
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1 }}
+            className="group relative bg-black/40 border border-white/10 p-6 rounded-xl overflow-hidden backdrop-blur-sm hover:border-cyan-500/50 transition-all duration-300"
+        >
+            {/* Hover Glow Effect */}
+            <div className="absolute inset-0 bg-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+            {/* HUD Corners */}
+            <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-white/20 group-hover:border-cyan-500 transition-colors" />
+            <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-white/20 group-hover:border-cyan-500 transition-colors" />
+            <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/20 group-hover:border-cyan-500 transition-colors" />
+            <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-white/20 group-hover:border-cyan-500 transition-colors" />
+
+            {/* Header */}
+            <div className="flex justify-between items-start mb-4 relative z-10">
+                <div className="p-3 bg-white/5 rounded-lg text-cyan-500 group-hover:text-cyan-400 group-hover:bg-cyan-500/20 transition-all duration-300">
+                    {icon}
+                </div>
+                <div className="text-[10px] font-mono text-gray-500 flex items-center gap-1 opacity-50 group-hover:opacity-100 transition-opacity">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse" />
+                    SYS_NODE_0{index + 1}
+                </div>
+            </div>
+
+            {/* Content */}
+            <div className="relative z-10">
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">{label}</h3>
+                <div className="flex flex-wrap gap-2">
+                    {value.split(', ').map((tech, i) => (
+                        <span key={i} className="px-2 py-1 text-xs font-mono text-cyan-300 bg-cyan-950/30 border border-cyan-500/20 rounded hover:border-cyan-500/50 transition-colors cursor-default">
+                            {tech}
+                        </span>
+                    ))}
+                </div>
+            </div>
+        </motion.div>
+    );
+};
+
 export const About = () => {
     const specs = [
         { icon: <Server size={24} />, label: "Backend Architecture", value: "Node.js, PHP, Python" },
@@ -116,7 +175,7 @@ export const About = () => {
                             </div>
                             <div className={`mt-1 ml-4 ${isTerminalInView ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200 delay-[4000ms]`}>
                                 <span className="bg-green-500/20 text-green-300 px-2 py-1 rounded">Available for Hire</span>
-                                <span className="animate-pulse ml-2 inline-block w-2 h-4 bg-green-500 align-middle"></span>
+                                <BlinkingCursor />
                             </div>
                         </div>
 
@@ -127,20 +186,7 @@ export const About = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {specs.map((spec, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            className="p-6 border border-white/10 bg-white/5 rounded-lg hover:border-cyan-500/50 hover:bg-white/10 transition-all group backdrop-blur-sm"
-                        >
-                            <div className="mb-4 text-cyan-500 group-hover:text-cyan-400 transition-colors">
-                                {spec.icon}
-                            </div>
-                            <h3 className="text-xl font-bold mb-2 font-display">{spec.label}</h3>
-                            <p className="text-gray-400 font-mono text-sm">{spec.value}</p>
-                        </motion.div>
+                        <SkillCard key={index} {...spec} index={index} />
                     ))}
                 </div>
             </div>
