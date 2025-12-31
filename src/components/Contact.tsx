@@ -1,23 +1,34 @@
 import { motion } from 'framer-motion';
-import { Mail, Send, MapPin, Phone } from 'lucide-react';
+import { Mail, Send, MapPin, Phone, Radio } from 'lucide-react';
+import { DecryptText } from './ui/DecryptText';
 
 export const Contact = () => {
     return (
-        <section className="py-20 bg-background relative overflow-hidden">
+        <section className="py-20 relative overflow-hidden">
             {/* Background Grid Accent */}
             <div className="absolute right-0 bottom-0 opacity-10">
                 <div className="w-96 h-96 border border-cyan-500/20 rounded-full blur-3xl"></div>
             </div>
 
             <div className="container mx-auto px-6 relative z-10">
+
+                {/* Standardized 'System Module' Header */}
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    className="mb-16 border-l-4 border-cyan-500 pl-6"
+                    className="mb-16 flex items-end gap-4"
                 >
-                    <h2 className="text-4xl font-bold mb-2">Initialize Connection</h2>
-                    <p className="text-gray-400">Establish a secure communication link.</p>
+                    <div className="text-6xl font-bold opacity-10 font-mono absolute -top-10 left-0 select-none">CONNECT</div>
+                    <div>
+                        <h2 className="text-4xl font-bold mb-2 flex items-center gap-3">
+                            <Radio className="text-cyan-500" />
+                            <DecryptText text="Establish Uplink" />
+                        </h2>
+                        <p className="text-gray-400 font-mono text-sm ml-10">
+                            &gt; Initiating secure handshake protocol...
+                        </p>
+                    </div>
                 </motion.div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -37,7 +48,6 @@ export const Contact = () => {
                             <div>
                                 <p className="text-sm text-gray-400">Email Protocol</p>
                                 <p className="text-lg font-mono text-white">contact@subratajana.dev</p>
-                                {/* Placeholder email, user didn't provide one explicitly in the resume text I saw, or I missed it. Using generic based on name. */}
                             </div>
                         </div>
 

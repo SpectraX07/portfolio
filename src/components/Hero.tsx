@@ -1,9 +1,16 @@
 import { motion } from 'framer-motion';
-import { Code, Terminal, Cpu } from 'lucide-react';
+import { Terminal, ArrowRight, Settings } from 'lucide-react';
+import { NavLink } from './ui/NavLink';
+import { useState } from 'react';
+import { TerminalModal } from './ui/TerminalModal';
 
 export const Hero = () => {
+    const [isTerminalOpen, setIsTerminalOpen] = useState(false);
+
     return (
-        <section className="min-h-screen relative flex items-center justify-center overflow-hidden bg-background">
+        <section className="min-h-screen relative flex items-center justify-center overflow-hidden">
+            <TerminalModal isOpen={isTerminalOpen} onClose={() => setIsTerminalOpen(false)} />
+
             {/* Background Grid Animation */}
             <div className="absolute inset-0 z-0 opacity-20">
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
@@ -30,7 +37,7 @@ export const Hero = () => {
                     >
                         Subrata Jana
                         <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">
-                            Digital Architect
+                            Senior Backend Engineer
                         </span>
                     </motion.h1>
 
@@ -38,13 +45,17 @@ export const Hero = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
-                        className="text-xl md:text-2xl text-gray-400 max-w-2xl mb-10 leading-relaxed"
+                        className="text-gray-400 text-lg md:text-xl mb-10 max-w-2xl leading-relaxed"
                     >
-                        Architecting the invisible. I build robust, scalable backend systems
-                        that power the digital world.
-                        <span className="block mt-4 text-cyan-500/60 font-mono text-sm">
-                            &lt;SystemStatus status="ONLINE" /&gt;
-                        </span>
+                        Architecting the Invisible. I build robust, scalable backend systems that power the digital world.
+                    </motion.p>
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.5 }}
+                        className="text-cyan-600/80 font-mono text-sm mb-10"
+                    >
+                        &lt;SystemStatus status="ONLINE" /&gt;
                     </motion.p>
 
                     <motion.div
@@ -53,26 +64,20 @@ export const Hero = () => {
                         transition={{ duration: 0.8, delay: 0.6 }}
                         className="flex flex-wrap gap-4"
                     >
-                        <button className="px-8 py-3 bg-cyan-600 hover:bg-cyan-500 text-black font-bold rounded-lg transition-all hover:scale-105 flex items-center gap-2">
-                            <Code size={20} />
-                            View Projects
-                        </button>
-                        <button className="px-8 py-3 border border-cyan-500/30 text-cyan-400 hover:bg-cyan-950/30 rounded-lg transition-all hover:scale-105 flex items-center gap-2">
-                            <Cpu size={20} />
+                        <NavLink href="#projects" className="flex items-center gap-2 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white px-8 py-3 rounded-lg font-bold transition-all shadow-lg hover:shadow-cyan-500/25">
+                            <ArrowRight size={18} /> View Projects
+                        </NavLink>
+
+                        <button
+                            onClick={() => setIsTerminalOpen(true)}
+                            className="flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white px-8 py-3 rounded-lg font-mono transition-all backdrop-blur-sm group hover:border-cyan-500/50 hover:text-cyan-400"
+                        >
+                            <Settings size={18} className="group-hover:rotate-90 transition-transform duration-700" />
                             System Specs
                         </button>
                     </motion.div>
                 </div>
             </div>
-
-            {/* Floating Elements */}
-            <motion.div
-                animate={{ y: [0, -20, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute bottom-20 right-20 opacity-20 hidden lg:block"
-            >
-                <Code size={120} className="text-cyan-500" />
-            </motion.div>
         </section>
     );
 };
