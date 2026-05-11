@@ -44,39 +44,81 @@ const BlinkingCursor = () => {
     );
 };
 
-const SkillCard = ({ icon, label, value, index }: { icon: any, label: string, value: string, index: number }) => {
+interface SkillSpec {
+    icon: React.ReactNode;
+    label: string;
+    value: string;
+    level: number;
+    projects: number;
+    description: string;
+}
+
+const SkillCard = ({ icon, label, value, index, level, projects, description }: SkillSpec & { index: number }) => {
+    const levelLabel = level >= 90 ? 'EXPERT' : level >= 75 ? 'ADVANCED' : 'PROFICIENT';
+    const levelColor = level >= 90 ? 'text-green-400' : level >= 75 ? 'text-cyan-400' : 'text-yellow-400';
+    const barColor = level >= 90 ? 'bg-green-500' : level >= 75 ? 'bg-cyan-500' : 'bg-yellow-500';
+    const barGlow = level >= 90 ? 'shadow-[0_0_8px_rgba(34,197,94,0.4)]' : level >= 75 ? 'shadow-[0_0_8px_rgba(6,182,212,0.4)]' : 'shadow-[0_0_8px_rgba(234,179,8,0.4)]';
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
-            className="group relative bg-black/40 border border-white/10 p-6 rounded-xl overflow-hidden backdrop-blur-sm hover:border-cyan-500/50 transition-all duration-300"
+            className="group relative bg-black/40 border border-white/10 p-5 sm:p-6 rounded-xl overflow-hidden backdrop-blur-sm hover:border-cyan-500/50 transition-all duration-500"
         >
             {/* Hover Glow Effect */}
             <div className="absolute inset-0 bg-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
+            {/* Scan Line on Hover */}
+            <div className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-pulse pointer-events-none top-1/2" />
+
             {/* HUD Corners */}
-            <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-white/20 group-hover:border-cyan-500 transition-colors" />
-            <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-white/20 group-hover:border-cyan-500 transition-colors" />
-            <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/20 group-hover:border-cyan-500 transition-colors" />
-            <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-white/20 group-hover:border-cyan-500 transition-colors" />
+            <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-white/20 group-hover:border-cyan-500 transition-colors duration-300" />
+            <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-white/20 group-hover:border-cyan-500 transition-colors duration-300" />
+            <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-white/20 group-hover:border-cyan-500 transition-colors duration-300" />
+            <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-white/20 group-hover:border-cyan-500 transition-colors duration-300" />
 
             {/* Header */}
             <div className="flex justify-between items-start mb-4 relative z-10">
-                <div className="p-3 bg-white/5 rounded-lg text-cyan-500 group-hover:text-cyan-400 group-hover:bg-cyan-500/20 transition-all duration-300">
+                <div className="p-3 bg-white/5 rounded-lg text-cyan-500 group-hover:text-cyan-400 group-hover:bg-cyan-500/20 group-hover:scale-110 transition-all duration-300">
                     {icon}
                 </div>
-                <div className="text-[10px] font-mono text-gray-500 flex items-center gap-1 opacity-50 group-hover:opacity-100 transition-opacity">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse" />
-                    SYS_NODE_0{index + 1}
+                <div className="text-right">
+                    <div className="text-[10px] font-mono text-gray-600 flex items-center gap-1.5 justify-end">
+                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse" />
+                        SYS_NODE_0{index + 1}
+                    </div>
+                    <div className={`text-[10px] font-mono font-bold ${levelColor} mt-1 tracking-wider`}>
+                        {levelLabel}
+                    </div>
                 </div>
             </div>
 
             {/* Content */}
             <div className="relative z-10">
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">{label}</h3>
-                <div className="flex flex-wrap gap-2">
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-1 group-hover:text-cyan-400 transition-colors duration-300">{label}</h3>
+                <p className="text-[11px] sm:text-xs text-gray-500 font-mono mb-4 leading-relaxed">{description}</p>
+
+                {/* Proficiency Bar */}
+                <div className="mb-4">
+                    <div className="flex justify-between items-center mb-1.5">
+                        <span className="text-[10px] font-mono text-gray-500 tracking-widest">PROFICIENCY</span>
+                        <span className="text-[10px] font-mono text-gray-400 tabular-nums">{level}%</span>
+                    </div>
+                    <div className="h-1 bg-white/5 rounded-full overflow-hidden">
+                        <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${level}%` }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1, delay: index * 0.15, ease: "easeOut" }}
+                            className={`h-full rounded-full ${barColor} ${barGlow}`}
+                        />
+                    </div>
+                </div>
+
+                {/* Tech Tags */}
+                <div className="flex flex-wrap gap-1.5 mb-4">
                     {value.split(', ').map((tech, i) => (
                         <motion.span
                             key={i}
@@ -84,11 +126,22 @@ const SkillCard = ({ icon, label, value, index }: { icon: any, label: string, va
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 + i * 0.05 }}
-                            className="px-2 py-1 text-xs font-mono text-cyan-300 bg-cyan-950/30 border border-cyan-500/20 rounded hover:border-cyan-500/50 hover:bg-cyan-500/10 transition-colors cursor-default"
+                            className="px-2 py-1 text-[10px] sm:text-xs font-mono text-cyan-300 bg-cyan-950/30 border border-cyan-500/20 rounded hover:border-cyan-500/50 hover:bg-cyan-500/10 transition-colors cursor-default"
                         >
                             {tech}
                         </motion.span>
                     ))}
+                </div>
+
+                {/* Footer Metrics */}
+                <div className="flex items-center justify-between pt-3 border-t border-white/5">
+                    <div className="flex items-center gap-1.5 text-[10px] font-mono text-gray-600">
+                        <div className="w-1 h-1 rounded-full bg-green-500" />
+                        <span>{projects} MODULES_DEPLOYED</span>
+                    </div>
+                    <div className="text-[10px] font-mono text-gray-600 tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
+                        ▸ ACTIVE
+                    </div>
                 </div>
             </div>
         </motion.div>
@@ -96,13 +149,13 @@ const SkillCard = ({ icon, label, value, index }: { icon: any, label: string, va
 };
 
 export const About = () => {
-    const specs = [
-        { icon: <Server size={24} />, label: "Backend Systems", value: "Node.js, Express.js, PHP, Laravel, CodeIgniter" },
-        { icon: <Database size={24} />, label: "Database Management", value: "PostgreSQL, MySQL, MongoDB" },
-        { icon: <Zap size={24} />, label: "Real-time Communication", value: "Socket.io, WebSocket, Automation" },
-        { icon: <Cloud size={24} />, label: "Cloud & Infrastructure", value: "AWS, cPanel, Git, API Integration" },
-        { icon: <Code size={24} />, label: "API Design", value: "REST APIs, Backend Development" },
-        { icon: <Layers size={24} />, label: "Architecture", value: "Software Architecture, JavaScript" },
+    const specs: SkillSpec[] = [
+        { icon: <Server size={24} />, label: "Backend Systems", value: "Node.js, Express.js, PHP, Laravel, CodeIgniter", level: 92, projects: 12, description: "High-performance server-side architectures with focus on scalability and maintainability." },
+        { icon: <Database size={24} />, label: "Database Management", value: "PostgreSQL, MySQL, MongoDB", level: 88, projects: 10, description: "Schema design, query optimization, and data pipeline engineering across SQL & NoSQL." },
+        { icon: <Zap size={24} />, label: "Real-time Communication", value: "Socket.io, WebSocket, Automation", level: 78, projects: 5, description: "Live data streaming, event-driven architectures, and workflow automation systems." },
+        { icon: <Cloud size={24} />, label: "Cloud & Infrastructure", value: "AWS, cPanel, Git, API Integration", level: 50, projects: 8, description: "Deployment pipelines, server management, and third-party service orchestration." },
+        { icon: <Code size={24} />, label: "API Design", value: "REST APIs, Backend Development", level: 90, projects: 14, description: "Clean, versioned API contracts with comprehensive documentation and auth layers." },
+        { icon: <Layers size={24} />, label: "Architecture", value: "Software Architecture, JavaScript", level: 82, projects: 6, description: "System design patterns, modular codebases, and cross-service communication strategies." },
     ];
 
     const terminalRef = useRef(null);
@@ -117,11 +170,11 @@ export const About = () => {
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    className="mb-20 flex items-end gap-4"
+                    className="mb-12 sm:mb-20 flex items-end gap-4"
                 >
-                    <div className="text-6xl font-bold opacity-10 font-mono absolute -top-10 left-0 select-none">PROFILE</div>
+                    <div className="text-4xl sm:text-6xl font-bold opacity-10 font-mono absolute -top-10 left-0 select-none">PROFILE</div>
                     <div>
-                        <h2 className="text-4xl font-bold mb-2 flex items-center gap-3">
+                        <h2 className="text-2xl sm:text-4xl font-bold mb-2 flex items-center gap-3">
                             <User className="text-cyan-500" />
                             <DecryptText text="System Specifications" />
                         </h2>

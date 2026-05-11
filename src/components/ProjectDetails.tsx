@@ -161,7 +161,7 @@ export const ProjectDetails = () => {
                                 <span className="tracking-widest uppercase">Initializing Module...</span>
                             </motion.div>
 
-                            <h1 className="text-5xl md:text-6xl lg:text-5xl font-bold text-white mb-6 tracking-tight leading-[1.05]">
+                            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-5xl font-bold text-white mb-6 tracking-tight leading-[1.05]">
                                 <DecryptText text={project.title} />
                             </h1>
 

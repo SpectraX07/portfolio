@@ -34,12 +34,12 @@ export const Hero = () => {
                         </motion.div>
 
                         <div className="space-y-2 mb-8">
-                            <h1 className="text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter leading-none">
+                            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter leading-none">
                                 <DecryptText text="Subrata" />
                                 <br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-gray-500">Jana</span>
                             </h1>
-                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-cyan-500 tracking-tight">
+                            <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-cyan-500 tracking-tight">
                                 <span className="opacity-50 mr-2">&gt;</span>
                                 <DecryptText text="Backend Engineer" delay={1000} />
                                 <span className="inline-block w-[3px] h-[0.9em] bg-cyan-500 ml-2 align-middle animate-pulse" />
@@ -50,7 +50,7 @@ export const Hero = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.5 }}
-                            className="text-xl text-gray-400 max-w-xl leading-relaxed mb-10 font-light"
+                            className="text-base sm:text-xl text-gray-400 max-w-xl leading-relaxed mb-10 font-light"
                         >
                             Engineering scalable infrastructures and business automation systems that power the digital frontier.
                         </motion.p>
@@ -59,14 +59,14 @@ export const Hero = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.7 }}
-                            className="flex flex-wrap gap-6"
+                            className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6"
                         >
                             <a
                                 href="#projects"
                                 className="group relative px-8 py-4 bg-cyan-500/10 text-cyan-400 font-black rounded-lg overflow-hidden transition-all hover:scale-105 active:scale-95 border border-cyan-500/50 hover:border-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.15)] hover:shadow-[0_0_30px_rgba(6,182,212,0.3)]"
                             >
                                 <div className="absolute inset-0 bg-cyan-500/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                                <span className="relative z-10 flex items-center gap-2">
+                                <span className="relative z-10 flex items-center justify-center gap-2">
                                     VIEW_PROJECTS <ExternalLink size={18} />
                                 </span>
                             </a>
@@ -75,7 +75,7 @@ export const Hero = () => {
                                 className="group relative px-8 py-4 bg-transparent text-white font-mono border border-white/10 rounded-lg overflow-hidden transition-all hover:border-cyan-500/50"
                             >
                                 <div className="absolute inset-0 bg-cyan-500/5 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                                <span className="relative z-10 flex items-center gap-2 tracking-widest">
+                                <span className="relative z-10 flex items-center justify-center gap-2 tracking-widest">
                                     SYSTEM_SPECS <Settings size={18} className="group-hover:rotate-90 transition-transform duration-700" />
                                 </span>
                             </button>
@@ -88,7 +88,7 @@ export const Hero = () => {
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 1 }}
-                            className="relative w-full max-w-[600px] mx-auto aspect-square"
+                            className="relative w-full max-w-[280px] sm:max-w-[400px] lg:max-w-[600px] mx-auto aspect-square"
                         >
                             {/* Rotating HUD Elements */}
                             <motion.div
@@ -133,7 +133,7 @@ export const Hero = () => {
                             <motion.div
                                 animate={{ y: [0, -10, 0] }}
                                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                                className="absolute -top-4 right-0 p-4 bg-black/80 backdrop-blur-md border border-cyan-500/30 rounded-xl shadow-2xl z-40"
+                                className="absolute -top-4 right-0 p-4 bg-black/80 backdrop-blur-md border border-cyan-500/30 rounded-xl shadow-2xl z-40 hidden sm:block"
                             >
                                 <div className="text-[10px] text-cyan-500 font-mono mb-1">CURRENT_STATUS</div>
                                 <div className="text-xs font-bold text-white flex items-center gap-2">
@@ -145,7 +145,7 @@ export const Hero = () => {
                             <motion.div
                                 animate={{ y: [0, 10, 0] }}
                                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                                className="absolute bottom-1/4 -left-8 p-4 bg-black/80 backdrop-blur-md border border-white/10 rounded-xl shadow-2xl z-40"
+                                className="absolute bottom-1/4 -left-8 p-4 bg-black/80 backdrop-blur-md border border-white/10 rounded-xl shadow-2xl z-40 hidden sm:block"
                             >
                                 <div className="text-[10px] text-gray-500 font-mono mb-1">PRIMARY_STACK</div>
                                 <div className="flex gap-2 text-cyan-500">

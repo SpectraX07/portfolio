@@ -119,7 +119,7 @@ export const Contact = () => {
                                 </div>
                             </div>
 
-                            <div className="p-8 space-y-8 font-mono">
+                            <div className="p-4 sm:p-8 space-y-6 sm:space-y-8 font-mono">
                                 {isSuccess ? (
                                     <motion.div
                                         initial={{ opacity: 0, scale: 0.9 }}
