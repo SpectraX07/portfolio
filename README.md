@@ -58,6 +58,43 @@ Typical layout:
 - `src/` — application source (components, pages, assets)
 - `public/` — static assets served as-is
 - `vite.config.ts`, `tailwind.config.*`, `tsconfig.*` — toolchain configuration
+- `vercel.json` — SPA routing for [Vercel](#deployment-vercel) (React Router)
+
+## DEPLOYMENT (Vercel)
+
+This app uses **client-side routes** (`/`, `/modules`, `/project/:id`). `vercel.json` rewrites unknown paths to `index.html` so refreshes and deep links work.
+
+### Source vs what goes live
+
+- **What people see in production** is the **build output**: the same files Vite writes to `dist/` (`index.html`, hashed JS/CSS under `assets/`, copied `public/` files). That is the “live” site — not your raw `src/*.tsx` on the wire.
+- **How it is separated:** `dist/` is listed in `.gitignore`, so you **do not commit** build output to GitHub. The repo holds **source + config** only. Vercel clones that repo, runs `npm run build` on their side, then **hosts only the fresh build** on the CDN. You are not uploading two trees by hand; deploy = “build from source, serve result.”
+- If you ever used **static hosting without a build step**, you could upload only `dist/` yourself; with **Git → Vercel**, you keep pushing the full project and Vercel produces `dist` per deploy.
+
+### One-time setup
+
+1. Push this repo to GitHub ([SpectraX07/portfolio](https://github.com/SpectraX07/portfolio)) if it is not already up to date.
+2. Sign in at [vercel.com](https://vercel.com) (GitHub login is fine).
+3. **Add New… → Project** → **Import** your `portfolio` repository.
+4. Vercel usually auto-detects **Vite**. Confirm:
+   - **Framework Preset:** Vite (or “Other” with **Build Command** `npm run build` and **Output Directory** `dist`).
+   - **Install Command:** `npm install` (default).
+   - **Root Directory:** `.` (repository root).
+5. Click **Deploy**. After the build finishes, you get a `*.vercel.app` URL.
+
+### After deploy
+
+- **Production:** each push to your production branch (typically `main`) can auto-deploy if you leave **Git Integration** enabled (default).
+- **Preview:** other branches and pull requests get preview URLs in the Vercel dashboard and on PR comments.
+- **Custom domain:** Project → **Settings → Domains** → add your domain and follow DNS instructions.
+
+### Sanity check locally
+
+```bash
+npm run build
+npm run preview
+```
+
+Visit `http://localhost:4173/modules` and reload; it should still load. If that works, Vercel will behave the same with `vercel.json` in place.
 
 ## CONTRIBUTING
 
