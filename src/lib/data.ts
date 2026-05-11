@@ -1,86 +1,270 @@
 export const projectsData = [
     {
-        id: "0",
+        id: "maitys-elderly-care",
         title: "Maitys Elderly Care",
-        category: "On-Demand Platform",
-        description: "A comprehensive service platform designed to connect elderly citizens with care providers. The system orchestrates complex real-time logistics.",
+        company: "Webingo Infotech Solutions LLP.",
+        domain: "https://webingo.in/",
+        category: "Healthcare & On-Demand Service",
+        description:
+            "A healthcare and on-demand service platform designed to connect elderly citizens with verified care providers through a real-time service management ecosystem.",
         specs: [
-            "Achieved 99.9% system uptime during peak traffic.",
-            "Optimized database queries reducing latency by 45%.",
-            "Handled over 10,000+ concurrent socket connections.",
-            "Integrated Google Maps API for real-time tracking.",
+            "Built a complete ecosystem with an Admin Panel and dedicated mobile apps for Members and Partners (Vendors).",
+            "Implemented real-time service request handling using Socket.io with instant accept/reject workflows and automatic request expiration after 5 minutes.",
+            "Integrated Google Maps API and Geofencing to route service requests only to vendors within designated service areas.",
+            "Developed package purchasing, service tracking, commission management, and vendor performance monitoring modules.",
+            "Created scalable admin tools to manage members, vendors, package orders, service requests, and configurable commission structures.",
         ],
-        tech: ["Node.js", "Firebase", "Socket.io", "Google Maps"],
-        image: "https://images.unsplash.com/photo-1555099962-4199c345e5dd?q=80&w=2670&auto=format&fit=crop"
+        tech: [
+            "Node.js",
+            "Firebase",
+            "Socket.io",
+            "Google Maps API",
+            "PHP",
+        ],
+        projectUrl: '',
+        image:
+            "https://images.unsplash.com/photo-1555099962-4199c345e5dd?q=80&w=2670&auto=format&fit=crop",
     },
     {
-        id: "1",
-        title: "Phoolwalee",
-        category: "Subscription System",
-        description: "Automated flower delivery ecosystem with subscription logic. Manages recurring orders and warehouse inventory automations.",
-        specs: [
-            "Reduced warehouse processing time by 60%.",
-            "Implemented recurring billing engine handling $50k/month.",
-            "Automated inventory alerts via AWS SNS.",
-            "Scalable MongoDB sharding implementation.",
-        ],
-        tech: ["Node.js", "MongoDB", "AWS", "PasetoToken"],
-        image: "https://images.unsplash.com/photo-1593642532400-2682810df593?q=80&w=2669&auto=format&fit=crop"
-    },
-    {
-        id: "2",
+        id: "param",
         title: "Param",
+        company: "Webingo Infotech Solutions LLP.",
+        domain: "https://webingo.in/",
         category: "FinTech Solution",
-        description: "Petty cash management system ensuring financial transparency. Features multi-level approval workflows and secure audit logging.",
+        description:
+            "A financial management platform designed for handling petty cash requests, approvals, and expense tracking with enhanced transparency and role-based financial control.",
         specs: [
-            "Processed over $1M in transaction requests securely.",
-            "Implemented RBAC (Role Based Access Control) for 5 user levels.",
-            "Generated detailed financial reports in < 200ms.",
-            "Migrated legacy PHP codebase to CodeIgniter 4."
+            "Developed and maintained the complete backend architecture powering the Admin Panel, Manager Panel, and Member mobile application.",
+            "Implemented multi-level approval workflows where Managers and Admins can approve, reject, or partially settle petty cash requests.",
+            "Built APIs for real-time expense tracking, balance monitoring, and request status management including Settled, Unsettled, Partially Settled, and Rejected states.",
+            "Created secure activity logging and reporting systems to ensure financial transparency and auditability across all transactions.",
+            "Integrated project, expenditure, and request management modules with secure authentication using PasetoToken and REST APIs.",
         ],
-        tech: ["CodeIgniter 4", "SQL", "REST API", "PasetoToken"],
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop"
+        tech: [
+            "CodeIgniter 4",
+            "SQL",
+            "REST API",
+            "PasetoToken",
+        ],
+        projectUrl: 'https://theparam.in/',
+        image:
+            "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop",
     },
     {
-        id: "3",
-        title: "CryptoSentinel",
-        category: "Blockchain Analytics",
-        description: "Real-time cryptocurrency fraud detection system using ML algorithms to flag suspicious wallet activities.",
+        id: "nycta-education-management",
+        title: "NYCTA Education Management System",
+        company: "Scriptlab Solutions",
+        domain: "https://www.scriptlab.in/",
+        category: "Education Management System",
+        timeTaken: "3 Months",
+        description:
+            "A comprehensive education management system built for computer training institutes to manage admissions, online examinations, student records, certificates, schedules, and branch operations through multiple dedicated panels.",
         specs: [
-            "Analyzed 100k+ transactions per second.",
-            "Integrated with 5 major blockchain nodes.",
-            "Reduced false positives by 35% with custom ML models.",
-            "Deployed on Kubernetes for auto-scaling."
+            "Developed a multi-panel system for Students, Branches, and Admins to streamline daily operations of computer training centers.",
+            "Built online examination and result management modules including admit card generation, mark sheets, certificate verification, and attendance tracking.",
+            "Implemented branch-level course customization, student registration, payment processing, and exam creation workflows.",
+            "Created centralized admin tools to manage branches, students, exams, certificates, mark sheets, and branch wallet balances.",
+            "Designed scalable backend architecture using CodeIgniter 4, PHP, and MySQL for handling academic and operational workflows efficiently.",
         ],
-        tech: ["Python", "TensorFlow", "Kubernetes", "Blockchain"],
-        image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2670&auto=format&fit=crop"
+        tech: [
+            "CodeIgniter 4",
+            "PHP",
+            "MySQL",
+        ],
+        projectUrl: '',
+        image:
+            "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2670&auto=format&fit=crop",
     },
     {
-        id: "4",
-        title: "UrbanPulse",
-        category: "Smart City IoT",
-        description: "Centralized dashboard for monitoring city utility sensors (water, electricity, traffic) in real-time.",
+        id: "library-management-system",
+        title: "Library Management System",
+        company: "Webingo Infotech Solutions LLP.",
+        domain: "https://webingo.in/",
+        category: "Library & Inventory Management",
+        timeTaken: "3 Months",
+        description:
+            "A digital library management system designed for educational institutions to manage books, lending operations, stock tracking, and role-based access with QR code integration.",
         specs: [
-            "Connected 50,000+ IoT sensors across the city.",
-            "Reduced energy wastage by 15% via smart grid analysis.",
-            "Provided sub-second latency for emergency alerts.",
-            "Built with Rust for high-performance edge computing."
+            "Developed a QR-based book lending and return system for efficient library operations and automated tracking.",
+            "Implemented book inventory management with support for multiple copies, real-time stock availability, and condition monitoring.",
+            "Built role-based access control (RBAC) allowing Admins to assign custom permissions and manage different user roles securely.",
+            "Integrated QR Code generation and scanning workflows to simplify borrowing, returning, and book identification processes.",
+            "Designed scalable backend modules using CodeIgniter 4, PHP, and MySQL for handling library operations efficiently.",
         ],
-        tech: ["Rust", "MQTT", "Grafana", "PostgreSQL"],
-        image: "https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=2669&auto=format&fit=crop"
+        tech: [
+            "CodeIgniter 4",
+            "PHP",
+            "MySQL",
+            "QR Code Integration",
+        ],
+        projectUrl: "",
+        image:
+            "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=2670&auto=format&fit=crop",
     },
     {
-        id: "5",
-        title: "HealthChain",
-        category: "Medical Records",
-        description: "Secure, decentralized electronic health record (EHR) system ensuring patient data privacy and interoperability.",
+        id: "wbtpta",
+        title: "WBTPTA",
+        company: "Webingo Infotech Solutions LLP.",
+        domain: "https://webingo.in/",
+        category: "Membership & Grievance Management",
+        timeTaken: "10 Days",
+        description:
+            "A membership and grievance management platform for the West Bengal Trinamool Primary Teachers' Association, designed to manage teacher memberships, subscriptions, grievance tracking, and organization-level operations.",
         specs: [
-            "Compliant with HIPAA and GDPR regulations.",
-            "Implemented Zero-Knowledge Proofs for patient privacy.",
-            "Reduced data retrieval time for doctors by 70%.",
-            "Interoperable with legacy hospital systems via HL7."
+            "Developed a multi-panel platform with Landing Page, State Panel, Member Panel, District Panel, and Circle Panel.",
+            "Implemented membership subscription workflows with transaction history, application tracking, and member management.",
+            "Built grievance management features allowing members to raise grievances, track status updates, and view grievance logs.",
+            "Created district and circle-level panels to manage memberships, applications, grievance reviews, and resolution workflows.",
+            "Implemented Sub-Admin Management with RBAC to control permissions across different user roles and access levels.",
+            "Added content management modules for News, Events, Circulars, Achievements, Gallery, and public contact information.",
         ],
-        tech: ["Hyperledger Fabric", "Go", "React", "IPFS"],
-        image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2670&auto=format&fit=crop"
-    }
+        tech: [
+            "CodeIgniter 4",
+            "SQL",
+        ],
+        projectUrl: '',
+        image:
+            "https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2670&auto=format&fit=crop",
+    },
+    {
+        id: "cbse-sahodaya-kolkata",
+        title: "CBSE Sahodaya Kolkata – 30th National Annual Conference",
+        company: "Webingo Infotech Solutions LLP.",
+        domain: "https://webingo.in/",
+        category: "Event Registration & Hotel Booking System",
+        timeTaken: "20 Days",
+        description:
+            "A registration and accommodation management platform developed for the 30th National Annual Conference of Sahodaya School Complexes to streamline participant onboarding and hotel booking operations.",
+        specs: [
+            "Developed a centralized event registration system for school principals attending the national annual conference.",
+            "Built an integrated hotel booking management module for handling attendee accommodation requests efficiently.",
+            "Created an Admin Panel to manage participant registrations, booking approvals, and status updates in real time.",
+            "Implemented secure registration workflows and structured participant data management using CodeIgniter 4 and SQL.",
+            "Designed scalable backend modules to support high-volume registrations and accommodation coordination for a large-scale national event.",
+        ],
+        tech: [
+            "CodeIgniter 4",
+            "SQL",
+        ],
+        projectUrl: "",
+        image:
+            "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=2670&auto=format&fit=crop",
+    },
+    {
+        id: "scratch-and-earn",
+        title: "Scratch & Earn",
+        company: "Webingo Infotech Solutions LLP.",
+        domain: "https://webingo.in/",
+        category: "Reward & Engagement System",
+        timeTaken: "3 Hours",
+        description:
+            "A reward-based testimonial engagement platform developed for collecting client interactions through a scratch-card reward mechanism with configurable winning probabilities.",
+        specs: [
+            "Developed and delivered the complete platform within 3 hours including both User App and Admin Panel functionalities.",
+            "Built a scratch-card reward system where users enter their phone number to reveal rewards based on a configurable 0.7% winning probability stored in the database.",
+            "Implemented secure backend APIs and authentication workflows using CodeIgniter 4, SQL, and PasetoToken.",
+            "Created Admin Panel modules to import and manage phone numbers, rewards, and winner records efficiently.",
+            "Integrated AJAX-powered Datatables for real-time winner management and fast administrative operations.",
+        ],
+        tech: [
+            "CodeIgniter 4",
+            "SQL",
+            "PasetoToken",
+            "AJAX",
+        ],
+        projectUrl: '',
+        image:
+            "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2670&auto=format&fit=crop",
+    },
+    {
+        id: "iihm",
+        title: "IIHM – International Institute of Hotel Management",
+        company: "Webingo Infotech Solutions LLP.",
+        domain: "https://webingo.in/",
+        category: "Education & Admission Management Platform",
+        timeTaken: "1 Month",
+        description:
+            "A comprehensive lead management platform developed for IIHM to manage student inquiries, courses, placements, media content, internships, and institutional operations through a centralized admin system.",
+        specs: [
+            "Developed a dynamic landing platform showcasing admissions, courses, placements, media content, and international internship programs.",
+            "Integrated third-party APIs and CRM systems to capture and manage student inquiries generated from the website.",
+            "Built a scalable Admin Panel for managing admissions, campuses, banners, courses, placements, awards, recognitions, and downloadable resources.",
+            "Implemented content management modules for Gallery, News & Updates, Newsletter Management, and Contact Management workflows.",
+            "Created Grievance Redressal and International Internship management systems along with configurable application settings including email and datetime management.",
+        ],
+        tech: [
+            "Laravel",
+            "SQL",
+        ],
+        projectUrl: "https://www.iihm.ac.in/",
+        image:
+            "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2670&auto=format&fit=crop",
+    },
+    {
+        id: "neptune-holidays-backend",
+        title: "Neptune Holidays Backend API",
+        company: "Webingo Infotech Solutions LLP.",
+        domain: "https://webingo.in/",
+        category: "Travel Booking & Inventory Management (Backend)",
+        timeTaken: "2.5 Months",
+        description:
+            "A production-grade Node.js REST API powering Neptune Holidays with multi-role authentication, travel inventory management, lead/booking workflows, caching, and secure file handling.",
+        specs: [
+            "Built a modular Express + Sequelize API backed by PostgreSQL with a clear MVC structure (controllers, services, validations, middleware).",
+            "Implemented JWT-based authentication with separate Admin and User flows, including OTP-based admin login and role/permission-based authorization (RBAC).",
+            "Developed end-to-end travel modules for Hotels, Flights, Holiday Packages, and Cabs including inventory, pricing utilities, lead capture, and booking conversions.",
+            "Added Redis-backed caching and session management with admin cache controls, health endpoints, and cache warm/clear utilities.",
+            "Integrated AWS S3 uploads with signed URLs for secure asset delivery; added Multer-based upload middleware and centralized validation with Joi.",
+            "Enabled API documentation via Swagger (swagger-jsdoc + swagger-ui-express), structured activity logging, and migration workflows using Umzug.",
+            "Added testing and automation utilities (Jest + Supertest) plus internal scripts to verify routes, check associations, and maintain consistent controller/model imports.",
+        ],
+        tech: [
+            "Node.js",
+            "Express.js",
+            "PostgreSQL",
+            "Sequelize",
+            "Redis",
+            "JWT",
+            "AWS S3",
+            "Swagger",
+            "Joi",
+            "Multer",
+            "Jest",
+            "Supertest",
+        ],
+        projectUrl: "https://bestvacationmakers.com/",
+        image:
+            "https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=2670&auto=format&fit=crop",
+    },
+    {
+        id: "bvviklang-hospital-crm",
+        title: "BVVIKLANG Hospital CRM",
+        company: "Personal Project",
+        domain: "",
+        category: "Healthcare CRM / Hospital Management (Admin Panel)",
+        description:
+            "A Laravel-based hospital CRM and prosthetics management admin panel with OTP login, role/permission access control, OPD/IPD visit workflows, pharmacy billing, inventory, reporting, and export/print tooling.",
+        specs: [
+            "Implemented OTP-based authentication flow plus password reset, with protected modules gated by permission middleware across the application.",
+            "Built patient master records with memberships, archiving, and full OPD/IPD visit lifecycle including symptoms, lab investigations, timelines, nurse notes, prescriptions, and discharge actions.",
+            "Developed pharmacy workflows for billing (PDF), medicine master data, purchases, batches, and searchable patient flows for faster counter operations.",
+            "Added inventory management for items, stores, suppliers, stock, item issues, and prosthetic stock tracking.",
+            "Created setup/master-data modules for charges, taxes, units, bed management (floors/groups/types/beds/status), HR (departments, designations, specialists, leave types), referral categories/commissions, and print templates.",
+            "Implemented dashboards and API endpoints for stats and charts; added exports (Excel) and PDF generation (mPDF) for reports and patient-related documents.",
+            "Configured modern UI with TailwindCSS + Alpine.js, Vite-powered asset pipeline, responsive layouts, and optional shared-hosting queue processing via cron (database queue).",
+        ],
+        tech: [
+            "Laravel 12",
+            "PHP 8.2+",
+            "TailwindCSS",
+            "Alpine.js",
+            "Vite",
+            "Database Queue",
+            "mPDF",
+            "Maatwebsite Excel",
+        ],
+        projectUrl: "",
+        image:
+            "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2670&auto=format&fit=crop",
+    },
 ];
