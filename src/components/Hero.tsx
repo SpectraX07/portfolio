@@ -42,6 +42,7 @@ export const Hero = () => {
                             <h2 className="text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-cyan-500 tracking-tight">
                                 <span className="opacity-50 mr-2">&gt;</span>
                                 <DecryptText text="Backend Engineer" delay={1000} />
+                                <span className="inline-block w-[3px] h-[0.9em] bg-cyan-500 ml-2 align-middle animate-pulse" />
                             </h2>
                         </div>
 
@@ -62,9 +63,9 @@ export const Hero = () => {
                         >
                             <a
                                 href="#projects"
-                                className="group relative px-8 py-4 bg-cyan-500 text-black font-black rounded-lg overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(6,182,212,0.3)]"
+                                className="group relative px-8 py-4 bg-cyan-500/10 text-cyan-400 font-black rounded-lg overflow-hidden transition-all hover:scale-105 active:scale-95 border border-cyan-500/50 hover:border-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.15)] hover:shadow-[0_0_30px_rgba(6,182,212,0.3)]"
                             >
-                                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                                <div className="absolute inset-0 bg-cyan-500/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                                 <span className="relative z-10 flex items-center gap-2">
                                     VIEW_PROJECTS <ExternalLink size={18} />
                                 </span>
@@ -102,7 +103,7 @@ export const Hero = () => {
                             />
 
                             {/* The Profile Image Container */}
-                            <div className="absolute inset-4 overflow-hidden rounded-full border border-white/10 bg-black/40 backdrop-blur-xl">
+                            <div className="absolute inset-4 overflow-hidden rounded-full border border-white/10 bg-black/40 backdrop-blur-xl group/photo">
                                 <motion.img
                                     src={hoomanImage}
                                     alt="Subrata Jana"
@@ -114,7 +115,7 @@ export const Hero = () => {
                                         repeat: Infinity,
                                         ease: "easeInOut"
                                     }}
-                                    className="w-full h-full object-contain relative z-20 drop-shadow-[0_0_15px_rgba(6,182,212,0.5)] grayscale brightness-110 contrast-125 opacity-80"
+                                    className="w-full h-full object-contain relative z-20 drop-shadow-[0_0_15px_rgba(6,182,212,0.5)] grayscale-[70%] brightness-110 contrast-110 opacity-90 group-hover/photo:grayscale-0 group-hover/photo:opacity-100 transition-all duration-700"
                                     style={{
                                         maskImage: "linear-gradient(to bottom, black 80%, transparent 100%)",
                                         WebkitMaskImage: "linear-gradient(to bottom, black 80%, transparent 100%)"

@@ -78,9 +78,16 @@ const SkillCard = ({ icon, label, value, index }: { icon: any, label: string, va
                 <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">{label}</h3>
                 <div className="flex flex-wrap gap-2">
                     {value.split(', ').map((tech, i) => (
-                        <span key={i} className="px-2 py-1 text-xs font-mono text-cyan-300 bg-cyan-950/30 border border-cyan-500/20 rounded hover:border-cyan-500/50 transition-colors cursor-default">
+                        <motion.span
+                            key={i}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 + i * 0.05 }}
+                            className="px-2 py-1 text-xs font-mono text-cyan-300 bg-cyan-950/30 border border-cyan-500/20 rounded hover:border-cyan-500/50 hover:bg-cyan-500/10 transition-colors cursor-default"
+                        >
                             {tech}
-                        </span>
+                        </motion.span>
                     ))}
                 </div>
             </div>
@@ -147,7 +154,7 @@ export const About = () => {
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={isTerminalInView ? { opacity: 1, scale: 1 } : {}}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="w-full md:w-1/3 font-mono text-sm text-green-400 bg-black p-6 rounded-lg border border-green-500/20 shadow-[0_0_30px_rgba(0,255,0,0.1)] min-h-[220px] relative group"
+                        className="w-full md:w-1/3 font-mono text-sm text-green-400 bg-black p-6 rounded-lg border border-green-500/20 shadow-[0_0_30px_rgba(0,255,0,0.1)] min-h-[220px] relative group hover:border-green-500/40 hover:shadow-[0_0_40px_rgba(0,255,0,0.15)] transition-all duration-500"
                     >
                         {/* Terminal Header Decor */}
                         <div className="flex gap-2 mb-4 opacity-50">

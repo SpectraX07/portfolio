@@ -6,6 +6,7 @@ import { Projects } from './components/Projects';
 import { Contact } from './components/Contact';
 import { CustomCursor } from './components/ui/CustomCursor';
 import { DataBackground } from './components/ui/DataBackground';
+import { SectionDivider } from './components/ui/SectionDivider';
 import { Loader } from './components/Loader';
 import { ProjectDetails } from './components/ProjectDetails';
 import { AllProjects } from './components/AllProjects';
@@ -62,18 +63,47 @@ function App() {
             <Navbar />
             <DataBackground />
 
-            <Routes location={location} key={location.pathname}>
-              <Route path="/" element={
-                <main className="relative z-10">
-                  <Hero />
-                  <section id="about"><About /></section>
-                  <section id="projects"><Projects /></section>
-                  <section id="contact"><Contact /></section>
-                </main>
-              } />
-              <Route path="/modules" element={<AllProjects />} />
-              <Route path="/project/:id" element={<ProjectDetails />} />
-            </Routes>
+            <AnimatePresence mode="wait">
+              <Routes location={location} key={location.pathname}>
+                <Route path="/" element={
+                  <motion.main
+                    className="relative z-10"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    <Hero />
+                    <SectionDivider label="DATA_STREAM_01" />
+                    <section id="about"><About /></section>
+                    <SectionDivider label="MODULE_REGISTRY" />
+                    <section id="projects"><Projects /></section>
+                    <SectionDivider label="COMM_UPLINK" />
+                    <section id="contact"><Contact /></section>
+                  </motion.main>
+                } />
+                <Route path="/modules" element={
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    <AllProjects />
+                  </motion.div>
+                } />
+                <Route path="/project/:id" element={
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    <ProjectDetails />
+                  </motion.div>
+                } />
+              </Routes>
+            </AnimatePresence>
             <Footer />
           </motion.div>
         )}
