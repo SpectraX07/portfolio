@@ -9,8 +9,10 @@ import { ParallaxBackground } from './components/ui/ParallaxBackground';
 import { Loader } from './components/Loader';
 import { ProjectDetails } from './components/ProjectDetails';
 import { AllProjects } from './components/AllProjects';
+import { Footer } from './components/Footer';
+import './index.css';
 import { AnimatePresence, motion } from 'framer-motion';
-import Lenis from '@studio-freight/lenis';
+import Lenis from 'lenis';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -70,6 +72,7 @@ function App() {
               <Route path="/modules" element={<AllProjects />} />
               <Route path="/project/:id" element={<ProjectDetails />} />
             </Routes>
+            <Footer />
           </motion.div>
         )}
       </AnimatePresence>

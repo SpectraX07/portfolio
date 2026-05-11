@@ -1,73 +1,75 @@
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+portfolio(7)                    PERSONAL SITE                    portfolio(7)
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## NAME
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+**portfolio** — personal portfolio site (React, TypeScript, Vite).
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## SYNOPSIS
+
+```bash
+npm install
+npm run dev
+```
+
+## DESCRIPTION
+
+Static-first personal portfolio with a terminal / Linux-adjacent visual vibe. Built with **React 19**, **TypeScript**, **Vite 7**, **Tailwind CSS**, **Framer Motion**, and **React Router**. Smooth scrolling via Lenis where applicable.
+
+This repository is **public** on GitHub: [SpectraX07/portfolio](https://github.com/SpectraX07/portfolio). Fork, branch, and open a pull request if you want to suggest changes — see [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## REQUIREMENTS
+
+- **Node.js** — current LTS or newer recommended
+- **npm** — ships with Node (or use your preferred compatible package manager)
+
+## INSTALLATION
+
+SSH:
+
+```bash
+git clone git@github.com:SpectraX07/portfolio.git
+cd portfolio
+npm install
+```
+
+HTTPS:
+
+```bash
+git clone https://github.com/SpectraX07/portfolio.git
+cd portfolio
+npm install
+```
+
+## COMMANDS
+
+| Command        | Action                          |
+|----------------|---------------------------------|
+| `npm run dev`  | Start dev server (Vite + HMR)   |
+| `npm run build`| Typecheck and production build  |
+| `npm run preview` | Serve the `dist` output locally |
+| `npm run lint` | Run ESLint                      |
+
+## FILES
+
+Typical layout:
+
+- `src/` — application source (components, pages, assets)
+- `public/` — static assets served as-is
+- `vite.config.ts`, `tailwind.config.*`, `tsconfig.*` — toolchain configuration
+
+## CONTRIBUTING
+
+Pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) for the full workflow, checks to run, and expectations.
+
+## LICENSE
+
+If you add a `LICENSE` file to the repo, describe it here (for example MIT, Apache-2.0, or “All rights reserved” for a personal site). Until then, assume **all rights reserved** unless you state otherwise in the repository settings and root `LICENSE`.
+
+---
+
+```
+$ echo "Thanks for reading — happy hacking."
+Thanks for reading — happy hacking.
 ```
