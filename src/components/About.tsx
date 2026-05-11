@@ -1,5 +1,5 @@
 import { motion, useInView } from 'framer-motion';
-import { Cpu, Database, Server, Shield, Zap, Cloud, Code, Layers, User } from 'lucide-react';
+import { Database, Server, Zap, Cloud, Code, Layers, User } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { DecryptText } from './ui/DecryptText';
 

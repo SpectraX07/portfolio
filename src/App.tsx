@@ -5,11 +5,12 @@ import { About } from './components/About';
 import { Projects } from './components/Projects';
 import { Contact } from './components/Contact';
 import { CustomCursor } from './components/ui/CustomCursor';
-import { ParallaxBackground } from './components/ui/ParallaxBackground';
+import { DataBackground } from './components/ui/DataBackground';
 import { Loader } from './components/Loader';
 import { ProjectDetails } from './components/ProjectDetails';
 import { AllProjects } from './components/AllProjects';
 import { Footer } from './components/Footer';
+import { Navbar } from './components/Navbar';
 import './index.css';
 import { AnimatePresence, motion } from 'framer-motion';
 import Lenis from 'lenis';
@@ -58,7 +59,8 @@ function App() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <ParallaxBackground />
+            <Navbar />
+            <DataBackground />
 
             <Routes location={location} key={location.pathname}>
               <Route path="/" element={

@@ -1,5 +1,5 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { useParams, Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import {
     ArrowLeft, Terminal, Cpu, Building2, Calendar,
     Globe, ExternalLink, ShieldCheck, Box,
@@ -93,6 +93,7 @@ const StatItem = ({ icon: Icon, label, value, delay }: { icon: LucideIcon, label
 
 export const ProjectDetails = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const project = projectsData.find(p => p.id === id);
     const containerRef = useRef(null);
 
@@ -125,14 +126,17 @@ export const ProjectDetails = () => {
                 <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="flex items-center justify-between mb-12"
+                    className="flex items-center justify-between mb-12 relative z-20"
                 >
-                    <Link to="/" className="inline-flex items-center gap-3 text-gray-500 hover:text-cyan-400 transition-all group font-mono text-sm">
+                    <button 
+                        onClick={() => navigate(-1)}
+                        className="inline-flex items-center gap-3 text-gray-500 hover:text-cyan-400 transition-all group font-mono text-sm outline-none"
+                    >
                         <div className="p-2 rounded-full border border-white/10 group-hover:border-cyan-500/50 group-hover:bg-cyan-500/10 transition-all">
                             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
                         </div>
                         <span>SYS.BACK_TO_TERMINAL()</span>
-                    </Link>
+                    </button>
                     <div className="hidden md:flex items-center gap-4 text-[10px] font-mono text-gray-600 tracking-tighter">
                         <span className="flex items-center gap-1"><Activity size={10} className="text-green-500" /> STATUS: ONLINE</span>
                         <span className="flex items-center gap-1"><ShieldCheck size={10} className="text-cyan-500" /> SECURE_LINK: TRUE</span>

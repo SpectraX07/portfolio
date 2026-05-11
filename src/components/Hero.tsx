@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Terminal, Code, ExternalLink, Cpu, Shield, Zap, Database, Settings } from 'lucide-react';
+import { ExternalLink, Cpu, Zap, Database, Settings } from 'lucide-react';
 import { DecryptText } from './ui/DecryptText';
 import { useState } from 'react';
 import { TerminalModal } from './ui/TerminalModal';
