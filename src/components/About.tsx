@@ -1,5 +1,5 @@
 import { motion, useInView } from 'framer-motion';
-import { Cpu, Database, Server, Smartphone, Globe, Shield, User } from 'lucide-react';
+import { Cpu, Database, Server, Shield, Zap, Cloud, Code, Layers, User } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { DecryptText } from './ui/DecryptText';
 
@@ -90,12 +90,12 @@ const SkillCard = ({ icon, label, value, index }: { icon: any, label: string, va
 
 export const About = () => {
     const specs = [
-        { icon: <Server size={24} />, label: "Backend Architecture", value: "Node.js, PHP, Python" },
-        { icon: <Database size={24} />, label: "Database Management", value: "SQL, MongoDB, Firebase" },
-        { icon: <Cpu size={24} />, label: "System Optimization", value: "High-Performance APIs" },
-        { icon: <Smartphone size={24} />, label: "Cross-Platform", value: "Flutter, React Native" },
-        { icon: <Globe size={24} />, label: "Web Technologies", value: "React, Next.js, Vite" },
-        { icon: <Shield size={24} />, label: "Security", value: "JWT, OAuth, RBAC" },
+        { icon: <Server size={24} />, label: "Backend Systems", value: "Node.js, Express.js, PHP, Laravel, CodeIgniter" },
+        { icon: <Database size={24} />, label: "Database Management", value: "PostgreSQL, MySQL, MongoDB" },
+        { icon: <Zap size={24} />, label: "Real-time Communication", value: "Socket.io, WebSocket, Automation" },
+        { icon: <Cloud size={24} />, label: "Cloud & Infrastructure", value: "AWS, cPanel, Git, API Integration" },
+        { icon: <Code size={24} />, label: "API Design", value: "REST APIs, Backend Development" },
+        { icon: <Layers size={24} />, label: "Architecture", value: "Software Architecture, JavaScript" },
     ];
 
     const terminalRef = useRef(null);
@@ -132,14 +132,14 @@ export const About = () => {
                         className="flex-1"
                     >
                         <p className="text-gray-300 leading-relaxed mb-6 text-lg">
-                            Experienced <span className="text-white font-bold">Senior Backend Engineer</span> with over <span className="text-white font-bold">14 years</span> of industry expertise.
+                            <span className="text-white font-bold text-2xl block mb-2">Backend Engineer</span>
+                            With <span className="text-white font-bold">4 years 10 months</span> of professional tenure engineering scalable web applications, business automation systems, and secure infrastructures across agency, freelance, and independent software projects.
                         </p>
                         <p className="text-gray-300 leading-relaxed mb-6 text-lg">
-                            Specialized in building scalable, secure, and high-performance applications.
-                            From intricate backend logic to seamless frontend interactions, I engineer digital solutions that solve complex real-world problems.
+                            Specialized in developing production-grade platforms across diverse domains including <span className="text-cyan-400 font-mono">FinTech</span>, <span className="text-cyan-400 font-mono">Healthcare</span>, <span className="text-cyan-400 font-mono">EduTech</span>, and <span className="text-cyan-400 font-mono">Real-time Logistics</span>. I focus on solving complex backend workflow challenges and automating repetitive business operations.
                         </p>
-                        <p className="text-gray-300 leading-relaxed text-lg">
-                            Currently architecting next-gen solutions using the latest tech stack.
+                        <p className="text-gray-400 font-mono italic text-sm">
+                            &gt; Dedicated to engineering scalable server-side systems that perform reliably in production.
                         </p>
                     </motion.div>
 
@@ -158,13 +158,13 @@ export const About = () => {
 
                         <TerminalLine
                             command="uptime"
-                            output="14 years, 320 projects, 99.9% success"
+                            output="4y 10m"
                             delay={500}
                             startAnimation={isTerminalInView}
                         />
                         <TerminalLine
                             command="location"
-                            output="Kolkata, India"
+                            output="Kolkata, India [700001]"
                             delay={2000}
                             startAnimation={isTerminalInView}
                         />
@@ -174,7 +174,9 @@ export const About = () => {
                                 current_status
                             </div>
                             <div className={`mt-1 ml-4 ${isTerminalInView ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200 delay-[4000ms]`}>
-                                <span className="bg-green-500/20 text-green-300 px-2 py-1 rounded">Available for Hire</span>
+                                <span className="bg-green-500/10 text-green-500 border border-green-500/30 px-3 py-1 rounded text-[10px] font-bold">
+                                    AVAILABLE_FOR_HIRE
+                                </span>
                                 <BlinkingCursor />
                             </div>
                         </div>

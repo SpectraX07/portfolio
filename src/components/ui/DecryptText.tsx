@@ -7,43 +7,49 @@ interface DecryptTextProps {
     text: string;
     className?: string;
     speed?: number;
+    delay?: number;
 }
 
-export const DecryptText = ({ text, className = "", speed = 30 }: DecryptTextProps) => {
-    const [displayText, setDisplayText] = useState('');
+export const DecryptText = ({ text, className = "", speed = 30, delay = 0 }: DecryptTextProps) => {
+    const [iteration, setIteration] = useState(0);
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-10%" });
 
     useEffect(() => {
         if (!isInView) return;
 
-        let iteration = 0;
-        const interval = setInterval(() => {
-            setDisplayText(
-                text
-                    .split("")
-                    .map((_, index) => {
-                        if (index < iteration) {
-                            return text[index];
-                        }
-                        return chars[Math.floor(Math.random() * chars.length)];
-                    })
-                    .join("")
-            );
+        const timeout = setTimeout(() => {
+            const interval = setInterval(() => {
+                setIteration((prev) => {
+                    if (prev >= text.length) {
+                        clearInterval(interval);
+                        return text.length;
+                    }
+                    return prev + 1;
+                });
+            }, speed);
 
-            if (iteration >= text.length) {
-                clearInterval(interval);
-            }
+            return () => clearInterval(interval);
+        }, delay);
 
-            iteration += 1;
-        }, speed);
-
-        return () => clearInterval(interval);
-    }, [isInView, text, speed]);
+        return () => clearTimeout(timeout);
+    }, [isInView, text, speed, delay]);
 
     return (
-        <span ref={ref} className={className}>
-            {displayText || text.split("").map(() => chars[Math.floor(Math.random() * chars.length)]).join("")}
+        <span ref={ref} className={`font-mono leading-none ${className}`}>
+            {text.split("").map((char, index) => {
+                if (index < iteration) {
+                    return <span key={index}>{char}</span>;
+                }
+                return (
+                    <span 
+                        key={index} 
+                        className="text-[0.4em] opacity-40 inline-block align-middle mx-[1px]"
+                    >
+                        {chars[Math.floor(Math.random() * chars.length)]}
+                    </span>
+                );
+            })}
         </span>
     );
 };

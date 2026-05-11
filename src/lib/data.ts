@@ -178,7 +178,7 @@ export const projectsData = [
     },
     {
         id: "iihm",
-        title: "IIHM – International Institute of Hotel Management",
+        title: "International Institute of Hotel Management",
         company: "Webingo Infotech Solutions LLP.",
         domain: "https://webingo.in/",
         category: "Education & Admission Management Platform",

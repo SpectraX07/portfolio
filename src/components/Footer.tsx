@@ -40,9 +40,9 @@ export const Footer = () => {
                     onMouseLeave={() => mouseX.set(Infinity)}
                     className="flex items-end gap-4 h-20 px-4 items-center"
                 >
-                    <SocialIcon mouseX={mouseX} icon={Github} href="https://github.com" />
-                    <SocialIcon mouseX={mouseX} icon={Linkedin} href="https://linkedin.com" />
-                    <SocialIcon mouseX={mouseX} icon={Mail} href="mailto:contact@example.com" />
+                    <SocialIcon mouseX={mouseX} icon={Github} href="https://github.com/spectrax07" />
+                    <SocialIcon mouseX={mouseX} icon={Linkedin} href="https://www.linkedin.com/in/spectrax07" />
+                    <SocialIcon mouseX={mouseX} icon={Mail} href="mailto:spectraxcodes07@gmail.com" />
                 </div>
 
                 {/* Copyright Text */}
