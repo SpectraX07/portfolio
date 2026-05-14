@@ -1,54 +1,34 @@
 export const projectsData = [
     {
-        id: "maitys-elderly-care",
-        title: "Maitys Elderly Care",
-        company: "Webingo Infotech Solutions LLP.",
-        domain: "https://webingo.in/",
-        category: "Healthcare & On-Demand Service",
+        id: "bvviklang-hospital-crm",
+        title: "BVVIKLANG Hospital CRM",
+        company: "Personal Project",
+        domain: "",
+        category: "Healthcare CRM / Hospital Management (Admin Panel)",
         description:
-            "A healthcare and on-demand service platform designed to connect elderly citizens with verified care providers through a real-time service management ecosystem.",
+            "A Laravel-based hospital CRM and prosthetics management admin panel with OTP login, role/permission access control, OPD/IPD visit workflows, pharmacy billing, inventory, reporting, and export/print tooling.",
         specs: [
-            "Built a complete ecosystem with an Admin Panel and dedicated mobile apps for Members and Partners (Vendors).",
-            "Implemented real-time service request handling using Socket.io with instant accept/reject workflows and automatic request expiration after 5 minutes.",
-            "Integrated Google Maps API and Geofencing to route service requests only to vendors within designated service areas.",
-            "Developed package purchasing, service tracking, commission management, and vendor performance monitoring modules.",
-            "Created scalable admin tools to manage members, vendors, package orders, service requests, and configurable commission structures.",
+            "Implemented OTP-based authentication flow plus password reset, with protected modules gated by permission middleware across the application.",
+            "Built patient master records with memberships, archiving, and full OPD/IPD visit lifecycle including symptoms, lab investigations, timelines, nurse notes, prescriptions, and discharge actions.",
+            "Developed pharmacy workflows for billing (PDF), medicine master data, purchases, batches, and searchable patient flows for faster counter operations.",
+            "Added inventory management for items, stores, suppliers, stock, item issues, and prosthetic stock tracking.",
+            "Created setup/master-data modules for charges, taxes, units, bed management (floors/groups/types/beds/status), HR (departments, designations, specialists, leave types), referral categories/commissions, and print templates.",
+            "Implemented dashboards and API endpoints for stats and charts; added exports (Excel) and PDF generation (mPDF) for reports and patient-related documents.",
+            "Configured modern UI with TailwindCSS + Alpine.js, Vite-powered asset pipeline, responsive layouts, and optional shared-hosting queue processing via cron (database queue).",
         ],
         tech: [
-            "Node.js",
-            "Firebase",
-            "Socket.io",
-            "Google Maps API",
-            "PHP",
+            "Laravel 12",
+            "PHP 8.2+",
+            "TailwindCSS",
+            "Alpine.js",
+            "Vite",
+            "Database Queue",
+            "mPDF",
+            "Maatwebsite Excel",
         ],
-        projectUrl: '',
+        projectUrl: "",
         image:
-            "https://images.unsplash.com/photo-1555099962-4199c345e5dd?q=80&w=2670&auto=format&fit=crop",
-    },
-    {
-        id: "param",
-        title: "Param",
-        company: "Webingo Infotech Solutions LLP.",
-        domain: "https://webingo.in/",
-        category: "FinTech Solution",
-        description:
-            "A financial management platform designed for handling petty cash requests, approvals, and expense tracking with enhanced transparency and role-based financial control.",
-        specs: [
-            "Developed and maintained the complete backend architecture powering the Admin Panel, Manager Panel, and Member mobile application.",
-            "Implemented multi-level approval workflows where Managers and Admins can approve, reject, or partially settle petty cash requests.",
-            "Built APIs for real-time expense tracking, balance monitoring, and request status management including Settled, Unsettled, Partially Settled, and Rejected states.",
-            "Created secure activity logging and reporting systems to ensure financial transparency and auditability across all transactions.",
-            "Integrated project, expenditure, and request management modules with secure authentication using PasetoToken and REST APIs.",
-        ],
-        tech: [
-            "CodeIgniter 4",
-            "SQL",
-            "REST API",
-            "PasetoToken",
-        ],
-        projectUrl: 'https://theparam.in/',
-        image:
-            "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2670&auto=format&fit=crop",
     },
     {
         id: "nycta-education-management",
@@ -100,6 +80,57 @@ export const projectsData = [
         projectUrl: "",
         image:
             "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=2670&auto=format&fit=crop",
+    },
+    {
+        id: "maitys-elderly-care",
+        title: "Maitys Elderly Care",
+        company: "Webingo Infotech Solutions LLP.",
+        domain: "https://webingo.in/",
+        category: "Healthcare & On-Demand Service",
+        description:
+            "A healthcare and on-demand service platform designed to connect elderly citizens with verified care providers through a real-time service management ecosystem.",
+        specs: [
+            "Built a complete ecosystem with an Admin Panel and dedicated mobile apps for Members and Partners (Vendors).",
+            "Implemented real-time service request handling using Socket.io with instant accept/reject workflows and automatic request expiration after 5 minutes.",
+            "Integrated Google Maps API and Geofencing to route service requests only to vendors within designated service areas.",
+            "Developed package purchasing, service tracking, commission management, and vendor performance monitoring modules.",
+            "Created scalable admin tools to manage members, vendors, package orders, service requests, and configurable commission structures.",
+        ],
+        tech: [
+            "Node.js",
+            "Firebase",
+            "Socket.io",
+            "Google Maps API",
+            "PHP",
+        ],
+        projectUrl: '',
+        image:
+            "https://images.unsplash.com/photo-1555099962-4199c345e5dd?q=80&w=2670&auto=format&fit=crop",
+    },
+    {
+        id: "param",
+        title: "Param",
+        company: "Webingo Infotech Solutions LLP.",
+        domain: "https://webingo.in/",
+        category: "FinTech Solution",
+        description:
+            "A financial management platform designed for handling petty cash requests, approvals, and expense tracking with enhanced transparency and role-based financial control.",
+        specs: [
+            "Developed and maintained the complete backend architecture powering the Admin Panel, Manager Panel, and Member mobile application.",
+            "Implemented multi-level approval workflows where Managers and Admins can approve, reject, or partially settle petty cash requests.",
+            "Built APIs for real-time expense tracking, balance monitoring, and request status management including Settled, Unsettled, Partially Settled, and Rejected states.",
+            "Created secure activity logging and reporting systems to ensure financial transparency and auditability across all transactions.",
+            "Integrated project, expenditure, and request management modules with secure authentication using PasetoToken and REST APIs.",
+        ],
+        tech: [
+            "CodeIgniter 4",
+            "SQL",
+            "REST API",
+            "PasetoToken",
+        ],
+        projectUrl: 'https://theparam.in/',
+        image:
+            "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop",
     },
     {
         id: "wbtpta",
@@ -235,36 +266,5 @@ export const projectsData = [
         projectUrl: "https://bestvacationmakers.com/",
         image:
             "https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=2670&auto=format&fit=crop",
-    },
-    {
-        id: "bvviklang-hospital-crm",
-        title: "BVVIKLANG Hospital CRM",
-        company: "Personal Project",
-        domain: "",
-        category: "Healthcare CRM / Hospital Management (Admin Panel)",
-        description:
-            "A Laravel-based hospital CRM and prosthetics management admin panel with OTP login, role/permission access control, OPD/IPD visit workflows, pharmacy billing, inventory, reporting, and export/print tooling.",
-        specs: [
-            "Implemented OTP-based authentication flow plus password reset, with protected modules gated by permission middleware across the application.",
-            "Built patient master records with memberships, archiving, and full OPD/IPD visit lifecycle including symptoms, lab investigations, timelines, nurse notes, prescriptions, and discharge actions.",
-            "Developed pharmacy workflows for billing (PDF), medicine master data, purchases, batches, and searchable patient flows for faster counter operations.",
-            "Added inventory management for items, stores, suppliers, stock, item issues, and prosthetic stock tracking.",
-            "Created setup/master-data modules for charges, taxes, units, bed management (floors/groups/types/beds/status), HR (departments, designations, specialists, leave types), referral categories/commissions, and print templates.",
-            "Implemented dashboards and API endpoints for stats and charts; added exports (Excel) and PDF generation (mPDF) for reports and patient-related documents.",
-            "Configured modern UI with TailwindCSS + Alpine.js, Vite-powered asset pipeline, responsive layouts, and optional shared-hosting queue processing via cron (database queue).",
-        ],
-        tech: [
-            "Laravel 12",
-            "PHP 8.2+",
-            "TailwindCSS",
-            "Alpine.js",
-            "Vite",
-            "Database Queue",
-            "mPDF",
-            "Maatwebsite Excel",
-        ],
-        projectUrl: "",
-        image:
-            "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2670&auto=format&fit=crop",
     },
 ];
